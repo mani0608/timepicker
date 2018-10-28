@@ -1,0 +1,80 @@
+<div #container class="m-clock-container" [@fadeInCalendar]="'enter'">
+
+  <!--   <div class="text-center m-clock-section">
+    <span class="fa fa-clock-o title-icon" aria-hidden="true"></span>
+  </div> -->
+
+  <div class="m-clock-time-ph  m-clock-section">
+    <span [ngClass]="{'m-clock-span-hours':true, 'text-primary': attributes.clockView === 1}" [innerHTML]="attributes.selectedTime.hour"></span>
+    <span>:</span>
+    <span [ngClass]="{'m-clock-span-minutes':true, 'text-primary': attributes.clockView === 2}" [innerHTML]="attributes.selectedTime.minutes"></span>
+    <span class="m-clock-span-am-pm"></span>
+  </div>
+
+  <div class="m-clock-dialog-content">
+    <div #cp class="m-clock-plate m-clock-section">
+      <div class="m-clock-canvas">
+        <svg class="m-clock-svg" [attr.width]="attributes.timeDefaults.diameter" [attr.height]="attributes.timeDefaults.diameter">
+          <g [attr.transform]="transform">
+            <line x1="0" y1="0" [attr.x2]="attributes.lineX2" [attr.y2]="attributes.lineY2"></line>
+            <circle class="m-clock-canvas-bg" [attr.r]="attributes.timeDefaults.tickRadius" [attr.cx]="attributes.bgCX"
+              [attr.cy]="attributes.bgCY"></circle>
+            <circle class="m-clock-canvas-fg" r="3.5" [attr.cx]="attributes.fgCX" [attr.cy]="attributes.fgCY"></circle>
+            <circle class="m-clock-canvas-bearing" cx="0" cy="0" r="2"></circle>
+          </g>
+        </svg>
+      </div>
+
+      <div class="m-timer m-clock-section">
+          <div appClockViewTransition class="m-clock-dial m-clock-12 m-clock-hours" *ngIf="attributes.clockView === 1 && attributes.clockType === 12">
+            <div class="m-clock-tick" appTickerDragCapture appHourStyleTicker [step]="step" [spacedMinutes]="false"
+              [cp]="cpRef" (returnValues)="syncAttributes($event)" *ngFor="let step of attributes.clockType | mClockArray:attributes.clockView:attributes.clockType; let i = index">
+              <button class="event-src" mat-mini-fab color="primary"><span class="event-src" [innerHTML]="format(step)"></span></button>
+            </div>
+          </div>
+          <div appClockViewTransition class="m-clock-dial m-clock-24 m-clock-hours" *ngIf="attributes.clockView === 1 && attributes.clockType === 24">
+            <div class="m-clock-tick" appTickerDragCapture appHourStyleTicker [step]="step" [spacedMinutes]="false"
+              [cp]="cpRef" (returnValues)="syncAttributes($event)" *ngFor="let step of attributes.clockType | mClockArray:attributes.clockView:attributes.clockType; let i = index">
+              <button class="event-src" mat-mini-fab color="primary"><span class="event-src" [innerHTML]="format(step)"></span></button>
+            </div>
+          </div>
+          <div appClockViewTransition class="m-clock-dial m-clock-minutes m-clock-dial-out" *ngIf="attributes.clockView == 2">
+            <div class="m-clock-tick event-src" appTickerDragCapture appMinutesStyleTicker [step]="step"
+              [spacedMinutes]="false" [cp]="cpRef" *ngFor="let step of attributes.clockType | mClockArray:attributes.clockView; let i = index">
+              <button class="event-src" mat-mini-fab><span class="event-src" [innerHTML]="format(step)"></span></button>
+            </div>
+          </div>
+      </div>
+    </div>
+
+    <div class="m-clock-am-pm-block mt-3 text-center m-clock-section">
+      <div *ngIf="attributes.clockType === 12" class="am-pm-section d-inline-block">
+        <mat-button-toggle-group #group="matButtonToggleGroup" (change)="update('meridian', $event)" [value]="attributes.selectedTime.meridian">
+          <mat-button-toggle value="AM">
+            <span>AM</span>
+          </mat-button-toggle>
+          <mat-button-toggle value="PM">
+            <span>PM</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="clock-type-section d-inline-block pl-2">
+        <mat-button-toggle-group #group="matButtonToggleGroup" (change)="update('type', $event)" [value]="attributes.clockType">
+          <mat-button-toggle [value]="12">
+            <span>12</span>
+          </mat-button-toggle>
+          <mat-button-toggle [value]="24">
+            <span>24</span>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="clock-dialog-action m-clock-section" *ngIf="attributes.timeDefaults.autoclose === 0 && attributes.timeDefaults.donetext.length > 0"
+    mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="select()" cdkFocusInitial>
+      <span [innerHTML]="attributes.timeDefaults.donetext"></span>
+    </button>
+  </div>
+</div>

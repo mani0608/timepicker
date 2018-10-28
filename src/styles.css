@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.mat-mini-fab {
+    width: 35px !important;
+    height: 35px !important;
+    box-shadow: none !important;
+}
+
+.mat-button-wrapper {
+    padding: 0px !important;
+}
+
+button:focus {
+	outline: none !important;
+}
+
+.mat-button-toggle-label-content {
+    line-height: 26px !important;
+    padding: 0 8px !important;
+}
+
+.mat-button-toggle-checked {
+    background-color: #007bff !important;
+    color: #ececec !important;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+    display: block !important;
+    flex-direction: unset !important;
+}

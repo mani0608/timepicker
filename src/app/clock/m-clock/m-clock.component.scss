@@ -1,0 +1,177 @@
+/*!
+ * m-clock v{package.version} for Bootstrap (http://weareoutman.github.io/m-clock/)
+ * Copyright 2014 Wang Shenwei.
+ * Licensed under MIT (https://github.com/weareoutman/m-clock/blob/gh-pages/LICENSE)
+ */
+
+.m-clock .input-group-addon {
+	cursor: pointer;
+}
+.m-clock-moving {
+	cursor: move;
+}
+
+.m-clock-plate {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	overflow: visible;
+	position: relative;
+	/* Disable text selection highlighting. Thanks to Hermanya */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: inline-block;
+	text-align: center;
+}
+.m-clock-canvas,
+.m-clock-dial {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	left: -1px;
+	top: -1px;
+}
+
+.m-clock-tick {
+	border-radius: 50%;
+	color: #666;
+	line-height: 26px;
+	text-align: center;
+	width: 35px;
+	height: 35px;
+	position: absolute;
+	cursor: pointer;
+}
+
+.m-clock-button {
+	background-image: none;
+	background-color: #fff;
+	border-width: 1px 0 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	margin: 0;
+	padding: 10px 0;
+}
+.m-clock-button:hover {
+	background-image: none;
+	background-color: #ebebeb;
+}
+.m-clock-button:focus {
+	outline: none!important;
+}
+.m-clock-dial {
+	-webkit-transition: -webkit-transform 350ms, opacity 350ms;
+	-moz-transition: -moz-transform 350ms, opacity 350ms;
+	-ms-transition: -ms-transform 350ms, opacity 350ms;
+	-o-transition: -o-transform 350ms, opacity 350ms;
+	transition: transform 350ms, opacity 350ms;
+}
+.m-clock-dial-out {
+	opacity: 0;
+}
+.m-clock-hours.m-clock-dial-out {
+	-webkit-transform: scale(1.2, 1.2);
+	-moz-transform: scale(1.2, 1.2);
+	-ms-transform: scale(1.2, 1.2);
+	-o-transform: scale(1.2, 1.2);
+	transform: scale(1.2, 1.2);
+}
+.m-clock-minutes.m-clock-dial-out {
+	-webkit-transform: scale(.8, .8);
+	-moz-transform: scale(.8, .8);
+	-ms-transform: scale(.8, .8);
+	-o-transform: scale(.8, .8);
+	transform: scale(.8, .8);
+}
+.m-clock-canvas {
+	-webkit-transition: opacity 175ms;
+	-moz-transition: opacity 175ms;
+	-ms-transition: opacity 175ms;
+	-o-transition: opacity 175ms;
+	transition: opacity 175ms;
+}
+.m-clock-canvas-out {
+	opacity: 0.25;
+}
+.m-clock-canvas-bearing {
+	fill: #007bff;
+	stroke:none;
+}
+
+.m-clock-canvas-fg {
+	/* stroke: none;
+	fill: rgb(0, 149, 221); */
+	fill: #007bff;
+	stroke:none;
+}
+
+.m-clock-canvas-bg {
+	/* stroke: none;
+	fill: rgb(192, 229, 247); */
+	fill: none;
+	stroke: #adadad;
+	stroke-width: 1;
+}
+.m-clock-canvas-bg-trans {
+	fill: rgba(0, 149, 221, .25);
+}
+.m-clock-canvas line {
+	/* stroke: rgb(0, 149, 221); */
+	stroke: #adadad;
+	stroke-width: 1;
+	stroke-linecap: round;
+	/*shape-rendering: crispEdges;*/
+}
+.m-clock-button.am-button {
+	margin: 1px;
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 4px;
+	
+}
+.m-clock-button.pm-button {
+	margin: 1px 1px 1px 136px;
+	padding: 5px;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 4px;
+}
+
+.mat-mini-fab {
+	background-color: transparent;
+	color: #666;
+}
+
+.m-clock-tick:hover {
+    background-color: rgb(192, 229, 247);
+}
+
+.m-clock-dialog-content {
+	text-align: center;
+}
+
+.mat-button-toggle-group-appearance-standard {
+	border-radius: 2em;
+}
+
+.title-icon {
+	color: #a0a0a0
+}
+
+.clock-dialog-action {
+	display: block;
+	text-align: center;
+}
+
+.m-clock-time-ph {
+	text-align: center;
+}
+
+.m-clock-section {
+	padding: .25em;
+}
